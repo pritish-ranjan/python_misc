@@ -1,0 +1,54 @@
+__pycache__
+.env
+venv
+env
+.venv
+
+certificates
+htmlcov
+.coverage
+.cache
+.pytest_cache
+db.sqlite3
+logs/
+.DS_Store
+node_modules
+ui/storybook-static
+**/dist
+dist
+coverage
+
+# local env files
+.env.*.local
+
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# terraform file
+.terraform
+*.tfstate*
+credentials.auto.tfvars
+*.tfstate.*
+.terraform.lock.hcl
+
+# Test reports
+junit*
+test-report*
+ui/test-report.xml
+
+# Certificates
+GlaxoSmithKline Certificate Authority.crt
+WMSERVICE Certificate Authority 1.crt
+WMSERVICE Certificate Authority 2.crt
+gsk-internal-cert.pem
