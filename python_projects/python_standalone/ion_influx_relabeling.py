@@ -5,6 +5,9 @@
 #    7
 #  3   6
 # 1 2 4 5
+#
+#
+#
 
 # Write a function solution(h, q) - where h is the height of the perfect tree of converters and q is a list of positive integers representing different flux converters - which returns a list of integers p where each element in p is the label of the converter that sits on top of the respective converter in q, or -1 if there is no such converter.  For example, solution(3, [1, 4, 7]) would return the converters above the converters at indexes 1, 4, and 7 in a perfect binary tree of height 3, which is [3, 6, -1].
 
@@ -31,3 +34,51 @@
 # Solution.solution(3, {7, 3, 5, 1})
 # Output:
 #     -1,7,6,3
+
+class BinaryTreeNode:
+
+    def __init__(self, data):
+        self.data = data
+        self.right = None
+        self.left = None
+
+    def add_child(self, n, diff):
+
+        self.right = BinaryTreeNode(n-1)
+        self.left = BinaryTreeNode(self.right.data - diff//2)
+
+    def post_order_traversal(self):
+        
+        elements = []
+
+        if self.left:
+            elements += self.left.post_order_traversal()
+
+        if self.right:
+            elements += self.right.post_order_traversal()
+
+        elements.append(self.data)
+
+        return elements
+
+def build_tree(elements):
+    n = len(elements)
+    root = BinaryTreeNode(elements[n-1])
+    
+    for i in range(0, n-1):
+        root.add_child(elements[i], elements[i]-1)
+    
+    return root
+
+def solution():
+    # tree_obj = BinaryTreeNode()
+    total_nodes_with_heigth_tree = 2**3 - 1
+    list_elements = list(range(1, total_nodes_with_heigth_tree+1))
+    list_elements.reverse()
+    print(list_elements)
+    binary_tree = build_tree(list_elements)
+    print(binary_tree.post_order_traversal())
+    # binary_tree = BinaryTreeNode.build_tree(list_elements)
+    return #list
+
+solution()
